@@ -30,7 +30,44 @@
         </ul>
 
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+            
+            <div class="tab-pane fade show active" id="client" role="tabpanel" aria-labelledby="home-tab">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Date de naissance</th>
+                            <th scope="col">Card</th>
+                            <th scope="col">N° de carte</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                            <?php
+                                // on se connecte à MySQL
+                                $client = mysql_connect('localhost', 'root', 'greendayÉ(&&');
+                                // on sélectionne la base
+                                mysql_select_db('colyseum',$db);
+                                // on crée la requête SQL
+                                $sql = '    SELECT * FROM clients';
+                                // on envoie la requête
+                                $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+
+
+?> 
+
+                            
+                            </th>
+                         
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
