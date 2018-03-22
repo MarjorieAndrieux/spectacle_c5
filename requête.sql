@@ -46,3 +46,13 @@
     /*Afficher tous les clients comme ceci : Nom : Nom de famille du client Prénom : Prénom du client Date de naissance : Date de naissance du client Carte de fidélité : Oui (Si le client en possède une) ou Non (s'il n'en possède pas) Numéro de carte : Numéro de la carte fidélité du client s il en possède une.*/
         SELECT lastname, firstname, birthdate, card, cardnumber 
         FROM clients
+
+        SELECT firstName,lastName,birthDate, 
+        REPLACE(cards.cardTypesId,'1','oui'), clients.cREPLACE(cards.cardTypesId,'1','oui')ardNumber 
+        FROM clients 
+        INNER JOIN cards ON clients.cardNumber = cards.cardNumber  
+        WHERE cards.cardTypesId=1
+        UNION SELECT firstName, lastName, birthDate , REPLACE(card,'0','non') , clients.cardNumber 
+        FROM clients 
+        WHERE clients.card=0;
+   --REPLACE(cards.cardTypesId,'1','oui') peut être remplacé par : 'oui' as card
