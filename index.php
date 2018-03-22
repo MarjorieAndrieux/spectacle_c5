@@ -1,7 +1,8 @@
-<php>
+<?php
+$connect=mysqli_connect("localhost", "root", "greendayÉ(&&", "colyseum");
+$connect->query ("SET NAME UTF8");
 
-
-</php>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,7 @@
     <div class="container-fluid">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#client" role="tab" aria-controls="client" aria-selected="true">Client</a>
             </li>
             
             <li class="nav-item">
@@ -35,35 +36,23 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
                             <th scope="col">Nom</th>
                             <th scope="col">Prénom</th>
-                            <th scope="col">Date de naissance</th>
-                            <th scope="col">Card</th>
-                            <th scope="col">N° de carte</th>
+
 
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                            $allclient=mysqli_query($connect,"SELECT * FROM clients;");
+                            while($client_res=mysqli_fetch_array($allclient)){
+                        ?>
+
                         <tr>
-                            <th scope="row">
-                            <?php
-                                // on se connecte à MySQL
-                                $client = mysql_connect('localhost', 'root', 'greendayÉ(&&');
-                                // on sélectionne la base
-                                mysql_select_db('colyseum',$db);
-                                // on crée la requête SQL
-                                $sql = '    SELECT * FROM clients';
-                                // on envoie la requête
-                                $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
-
-
-?> 
-
-                            
-                            </th>
-                         
+                            <th scope="row"> <?php echo($client_res ['lastName']);?></th>
+                            <th scope="row"> <?php echo($client_res ['firstName']);?></th>
                         </tr>
+                            <?php } ?>  
                     </tbody>
                 </table>
             </div>
